@@ -1,35 +1,27 @@
 package simulation;
 
-import model.ExecutionSegment;
-import model.ProcessStats;
-import model.QueueSnapshot;
-
-import java.util.ArrayList;
 import java.util.List;
+import model.ProcessResult;
 
 public class SimulationResult {
 
+    public final List<ProcessResult> processes;
 
-    private List<ProcessStats> processStats;
-    private List<ExecutionSegment> executionSegments;
-    private List<QueueSnapshot> queueSnapshots;
-
-    public SimulationResult() {
-
-        processStats = new ArrayList<>();
-        executionSegments = new ArrayList<>();
-        queueSnapshots = new ArrayList<>();
+    public SimulationResult(List<ProcessResult> processes) {
+        this.processes = List.copyOf(processes);
     }
 
-    public List<ProcessStats> getProcessStats() {
-        return processStats;
+    public double averageWaitingTime() {
+        return processes.stream()
+                .mapToInt(ProcessResult::waitingTime)
+                .average()
+                .orElse(0.0);
     }
 
-    public List<ExecutionSegment> getExecutionSegments() {
-        return executionSegments;
-    }
-
-    public List<QueueSnapshot> getQueueSnapshots() {
-        return queueSnapshots;
+    public double averageTurnaroundTime() {
+        return processes.stream()
+                .mapToInt(ProcessResult::turnaroundTime)
+                .average()
+                .orElse(0.0);
     }
 }

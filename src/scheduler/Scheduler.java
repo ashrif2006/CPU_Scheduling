@@ -5,12 +5,13 @@ import simulation.SimulationResult;
 import model.Process;
 import java.util.List;
 
-public interface Scheduler {
-    SimulationResult simulate(
+public abstract class Scheduler {
+
+    public abstract SimulationResult simulate(
             List<Process> processes,
             int quantum,
             int contextSwitch
     );
 
-    String getName();
+    public abstract String getName();
 }

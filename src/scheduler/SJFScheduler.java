@@ -1,23 +1,22 @@
 package scheduler;
 
-import simulation.SimulationResult;
-import model.Process;
 import java.util.List;
+import model.Process;
+import simulation.SimulationResult;
 
-public class SJFScheduler implements Scheduler{
+public class SJFScheduler extends Scheduler {
+
     @Override
     public SimulationResult simulate(
             List<Process> processes,
             int quantum,
             int contextSwitch) {
 
-        // TODO: Implement Preemptive SJF
-
-        return new SimulationResult();
+        return null;
     }
 
     @Override
     public String getName() {
-        return "Preemptive SJF";
+        return "Adaptive Container Scheduler";
     }
 }

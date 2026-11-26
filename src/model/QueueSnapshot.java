@@ -4,39 +4,18 @@ import java.util.List;
 
 public class QueueSnapshot {
 
-    private int time;
-    private String runningProcess;
+    public String id;
+    public String name;
+    public List<Process> processes;
 
-    private List<String> tier1;
-    private List<String> tier2;
-
-    public QueueSnapshot(int time,
-                         String runningProcess,
-                         List<String> tier1,
-                         List<String> tier2) {
-
-        this.time = time;
-        this.runningProcess = runningProcess;
-        this.tier1 = tier1;
-        this.tier2 = tier2;
+    public QueueSnapshot(
+            String id,
+            String name,
+            List<Process> processes
+    ) {
+        this.id = id;
+        this.name = name;
+        this.processes = processes.stream().map(Process::new).toList();
     }
 
-    public int getTime() {
-        return time;
-    }
-
-    public String getRunningProcess() {
-        return runningProcess;
-    }
-
-    public List<String> getTier1() {
-        return tier1;
-    }
-
-    public List<String> getTier2() {
-        return tier2;
-    }
 }
-
-
-
