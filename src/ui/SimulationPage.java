@@ -55,8 +55,7 @@ public class SimulationPage extends JPanel {
         sjfPanel.add(new JLabel("SJF Scheduler Panel"));
 
         schedulerContainer.add(new ACSchedulerPanel(configuration), "AC");
-        schedulerContainer.add(sjfPanel, "SJF");
-
+        schedulerContainer.add(new SJFSchedulerPanel(configuration), "SJF");
         cardLayout.show(schedulerContainer, "AC");
 
         add(schedulerContainer, BorderLayout.CENTER);
